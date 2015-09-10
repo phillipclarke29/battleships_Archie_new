@@ -43,14 +43,16 @@ class Player
   def fire(coord)
     ships.each do |ship|
       if ship.position == coord
-        return "hit!"
+        @hits << coord
+        ship.was_hit
       end
     end
     "missed!"
+    @misses << coord
   end
 
   # def check_ships
-    
+
   # end
 
 end

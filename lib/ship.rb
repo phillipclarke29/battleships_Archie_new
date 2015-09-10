@@ -14,7 +14,18 @@ class Ship
 
   def was_hit
     @hits += 1
-    	return "sunk" if @hits == @size
+    sunk
+  end
+
+  def sunk
+    if @hits == @size
+      'sunk'
+
+    else
+      p @size
+      p @hits
+      'hit'
+    end
   end
 
   def afloat?

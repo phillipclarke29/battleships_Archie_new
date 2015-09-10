@@ -28,5 +28,12 @@ describe Ship do
     expect(ship.afloat?).to be_truthy
   end
 
+  it "tells us if it is sunk" do
+  ship = Ship.new("D5")
+
+  end
+
+  
+
 
 end

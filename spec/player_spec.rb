@@ -76,15 +76,32 @@ describe Player do
    end
    it 'checks if the missile has missed a ship' do
     p = Player.new
-    expect(p.fire("A1")).to eq ("missed!")
+    p.fire("A1")
+    expect(p.misses).to include("A1")
   end
 
   it 'checks if the missile has hit a ship' do
    p = Player.new
    ship = Ship.new("A2")
    p.place(ship)
-   expect(p.fire("A2")).to eq ("hit!")
+   p.fire("A2")
+   expect(p.hits).to include("A2")
  end
+
+ it 'tells us if we have sunk a ship' do
+   p = Player.new
+   ship = Ship.new("A2")
+   p.place(ship)
+   p.fire("A2")
+   expect(ship.sunk).to eql("sunk")
+ end
+
+  xit 'tells after each shot if all ships are sunk' do
+    p = Player.new
+    ship = Ship.new("A2")
+    p.place(ship)
+    expect(p.fire("A2")).to eql("You have sunk all the ships")
+  end
 
   end
 end
