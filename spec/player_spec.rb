@@ -42,10 +42,26 @@ describe Player do
     expect(p.lost).to eq('Game Over - You Lose')
   end
 
-  # it 'can place ships' do
-  #   count = subject.ships.count
-  #   subject.place ship
-  #   expect(subject.ships.count).to eq(count + 1)
-  # end
+  it 'can report if not all ships are sunk' do
+    p = Player.new
+    ship = Ship.new('A1')
+    p.place(ship)
+    expect(p.lost).to eq('Try again')
+  end
+
+  it 'can place ships' do
+    p = Player.new
+    ship = Ship.new('A1')
+    p.place(ship)
+    expect(p.ships).to include(ship)
+  end
 
 end
+
+# Player
+
+#   can place ships
+#   can tell us when a ship is hit
+#   can report hit positions
+#   can report miss positions
+#   will lose if all ships are hit

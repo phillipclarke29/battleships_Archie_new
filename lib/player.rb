@@ -30,6 +30,8 @@ class Player
   def lost
     if @ships == @hits
       return 'Game Over - You Lose'
+    else
+      return 'Try again'
     end
   end
 
