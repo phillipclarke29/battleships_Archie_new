@@ -56,6 +56,18 @@ describe Player do
     expect(p.ships).to include(ship)
   end
 
+  # it 'is expected to respond to check_ships' do
+  #   expect(subject).to respond_to(:check_ships)
+  # end
+
+  it 'will raise an error if ships overlap' do
+    player = Player.new
+    ship1 = Ship.new('A1')
+    player.place(ship1)
+    ship2 = Ship.new('A1')
+    expect{player.place(ship2)}.to raise_error "Ships may not overlap!"
+  end
+
   describe "#missile" do
 
    it 'can fire a missile' do

@@ -4,13 +4,13 @@ require_relative 'ship'
 
 class Player
 
-  attr_reader :board, :ships, :hits, :misses
+  attr_reader :board, :ships, :hits, :misses, :new_ships
 
   def initialize
-    @board  = Board.new
-    @ships  = []
-    @hits   = []
-    @misses = []
+    @board     = Board.new
+    @ships     = []
+    @hits      = []
+    @misses    = []
   end
 
   def receive_miss(coord)
@@ -24,6 +24,11 @@ class Player
   end
 
   def place(ship)
+    ships.each do |x|
+      if x.position == ship.position
+      fail "Ships may not overlap!"
+      end
+    end
     ships << ship
   end
 
@@ -38,11 +43,14 @@ class Player
   def fire(coord)
     ships.each do |ship|
       if ship.position == coord
-      "hit!"
-        else
-      'miss'
-        end
+        return "hit!"
+      end
     end
+    "missed!"
   end
+
+  # def check_ships
+    
+  # end
 
 end
