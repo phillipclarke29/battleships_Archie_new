@@ -35,4 +35,14 @@ class Player
     end
   end
 
+  def fire(coord)
+    ships.each do |ship|
+      if ship.position == coord
+      "hit!"
+        else
+      'miss'
+        end
+    end
+  end
+
 end

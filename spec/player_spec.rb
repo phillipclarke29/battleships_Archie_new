@@ -56,6 +56,25 @@ describe Player do
     expect(p.ships).to include(ship)
   end
 
+  describe "#missile" do
+
+   it 'can fire a missile' do
+    expect(Player.new).to respond_to(:fire).with(1).argument
+
+   end
+   it 'checks if the missile has missed a ship' do
+    p = Player.new
+    expect(p.fire("A1")).to eq ("missed!")
+  end
+
+  it 'checks if the missile has hit a ship' do
+   p = Player.new
+   ship = Ship.new("A2")
+   p.place(ship)
+   expect(p.fire("A2")).to eq ("hit!")
+ end
+
+  end
 end
 
 # Player
