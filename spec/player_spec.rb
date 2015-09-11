@@ -3,18 +3,17 @@ require 'player'
 describe Player do
   let(:ship){double :ship}
 
-  it 'has a board' do
-    expect(subject).to respond_to(:board)
-  end
+  # xit 'has a board' do
+  #   expect(subject).to respond_to(:board)
+  # end
 
-  it 'has ships' do
-    expect(subject).to respond_to(:ships)
-  end
+  # it 'has ships' do
+  #   expect(subject).to respond_to(:ships)
+  # end
 
   it 'can report miss positions' do
-    p = Player.new
-    p.receive_miss('A1')
-    expect(p.misses).to include('A1')
+    subject.shot_miss('A1')
+    expect(subject.misses).to include('A1')
   end
 
   it 'can report hit positions' do
@@ -30,7 +29,7 @@ describe Player do
     expect(p.receive_hit('A1')).to eq('hit')
   end
 
-  it 'can report a miss' do
+  xit 'can report a miss' do
     p = Player.new
     ship = Ship.new('A1')
     p.place(ship)

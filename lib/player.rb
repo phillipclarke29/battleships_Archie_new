@@ -6,14 +6,14 @@ class Player
 
   attr_reader :board, :ships, :hits, :misses, :new_ships
 
-  def initialize
-    @board     = Board.new
+  def initialize(klass = Board.new)
+    @board     = klass
     @ships     = []
     @hits      = []
     @misses    = []
   end
 
-  def receive_miss(coord)
+  def shot_miss(coord)
     @misses << coord
     'miss'
   end
